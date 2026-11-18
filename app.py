@@ -12,3 +12,4 @@ role = st.selectbox("Job Title",['Machine Learning Engineer','AI Engineer','Seni
 if role == "Other":
   st.text_input('Enter your Job Title','xxxxxxxxx')
 model = st.selectbox('Model',['openai/gpt-oss-120b','openai/gpt-oss-20b'])
+level = st.selectbox('Level',['Beginner','intermediate','Advance'])

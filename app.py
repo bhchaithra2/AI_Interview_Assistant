@@ -5,6 +5,7 @@ st.title("AI Interview Assistant")
 st.caption("Practice and Prepare for your Placements here")
 try:
   client = Groq(api_key = st.secrets("GROQ_API_KEY"))
-except (KeyError, FileNotFound):
+except (KeyError, FileNotFoundError):
   st.error("API Key is missing. Add it in Advanced settings")
   st.stop()
+role = st.selectbox("Job Title",['Machine Learning Engineer','AI Engineer','Senior Software Engineer','DevOps Engineer']

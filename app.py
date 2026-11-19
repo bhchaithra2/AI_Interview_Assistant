@@ -41,15 +41,15 @@ elif mode == "Improve Answers":
 background = "Job role :" +role+ "Difficult level"+ level
 with st.spinner("Generating your answer...."):
    try:
-      response = client.chat.completions.create(
+      req = client.chat.completions.create(
         model = gen_model,
         messages = [{"role":"system",
                        "content":"Act as a Senior Interviewer,both HR and Technical expert"},
-                    {"role" : "user",
+                    {"role":"user",
                        "content":background + task}],
          temperature = 0.7,
          max_tokens = 1000 )
-      output = response.choices[0].message.content
+      output = req.choices[0].message.content
       st.subheader("AI Response")
       st.markdown(output)
       st.download_button("Download Response", output ,file_name = "Interview_Response.txt", mime = 'text/plain')

@@ -42,22 +42,20 @@ elif mode == "Improve Answers":
   with st.spinner("Generating your answer...."):
    try:
       response = client.chat.completions.create(
-      model = gen_model,
-      messages = [{"role":"system","content":"Act as a Senior Interviewer,both HR and Technical expert"},
+        model = gen_model,
+        messages = [{"role":"system","content":"Act as a Senior Interviewer,both HR and Technical expert"},
                 {"role" : "user",
                 "content" : background + task }],
-      temperature = 0.7,
-      max_tokens = 1000 )
-    output = response.choices[0].message.content
+         temperature = 0.7,
+         max_tokens = 1000 )
+      output = response.choices[0].message.content
       st.subheader("AI Response")
       st.markdown(output)
       st.download_button("Download Response", output ,file_name = "Interview_Response.txt", mine = 'text/plain')
-
-
    except Exception as e:
       st.error("API connection was unsuccessful:",e)
       st.info ("Please check your API Key and rate limits")
-      st.caption("Powered by streamlit.io and Github. Using LLM API")
+st.caption("Powered by streamlit.io and Github. Using LLM API")
 
     
   

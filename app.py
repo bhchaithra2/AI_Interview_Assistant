@@ -26,7 +26,7 @@ else:
 
 
 if st.button("Generate AI Response",type = 'primary'):
-  if mode == (['Evaluate Answer','Improve Answers'] and (not question.strip()) or (not answer.strip())):
+  if mode == ['Evaluate Answer','Improve Answers'] and (not question.strip() or (not answer.strip()):
     st.warning("Please enter a valid Question and Answer")
     st.stop()
 
@@ -40,18 +40,18 @@ elif mode == "Improve Answers":
   task = "Question :"+ question + "My Answer:" + answer +" Improve answers based on choice of words, key words to include,accurate,concise and clear answer."
 background = "Job role :" +role+ "Difficult level"+Level
 with st.spinner("Generating your answer...."):
-  try:
-  response = client.chat.completions.create(
-    model = gen_model,
-    messages = [{"role":"system","content":"Act as a Senior Interviewer,both HR and Technical expert"},
+try:
+      response = client.chat.completions.create(
+      model = gen_model,
+      messages = [{"role":"system","content":"Act as a Senior Interviewer,both HR and Technical expert"},
                 {"role" : "user",
                 "content" : background + task }],
-    temperature = 0.7,
-    max_tokens = 1000 )
-    output = response.choices[0].message.content
-    st.subheader("AI Response")
-    st.markdown(output)
-    st.download_button("Download Response", output ,file_name = "Interview_Response.txt", mine = 'text/plain')
+      temperature = 0.7,
+      max_tokens = 1000 )
+      output = response.choices[0].message.content
+      st.subheader("AI Response")
+      st.markdown(output)
+      st.download_button("Download Response", output ,file_name = "Interview_Response.txt", mine = 'text/plain')
 
 
   except Exception as e:

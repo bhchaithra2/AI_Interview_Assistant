@@ -38,7 +38,7 @@ elif mode == "Evaluate Answers":
   task = "Question :"+ question + "My Answer:" + answer +"Evaluate this answer based on concept,relevance,communication,length of answer.Give each rating out of 5 in a list."
 elif mode == "Improve Answers":
   task = "Question :"+ question + "My Answer:" + answer +" Improve answers based on choice of words, key words to include,accurate,concise and clear answer."
-background = "Job role :" +role+ "Difficult level"+ level
+background = "Job role :" + role + "Difficult level"+ level
 with st.spinner("Generating your answer...."):
    try:
       req = client.chat.completions.create(
@@ -46,13 +46,13 @@ with st.spinner("Generating your answer...."):
         messages = [{"role":"system",
                        "content":"Act as a Senior Interviewer,both HR and Technical expert"},
                     {"role":"user",
-                       "content":background + task}],
+                       "content":background+task}],
          temperature = 0.7,
          max_tokens = 1000 )
       output = req.choices[0].message.content
       st.subheader("AI Response")
       st.markdown(output)
-      st.download_button("Download Response", output ,file_name = "Interview_Response.txt", mime = 'text/plain')
+      st.download_button("Download Response", output ,file_name = "Interview_Response.txt", mime = "text/plain")
    except Exception as e:
       st.error("API connection was unsuccessful:",e)
       st.info ("Please check your API Key and rate limits")

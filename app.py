@@ -26,7 +26,7 @@ else:
 
 
 if st.button("Generate AI Response",type = 'primary'):
-  if mode == (['Evaluate Answer','Improve Answers'] and (not question.strip()) or (not answer.strip())]:
+  if mode == (['Evaluate Answer','Improve Answers'] and (not question.strip()) or (not answer.strip()):
     st.warning("Please enter a valid Question and Answer")
     st.stop()
 

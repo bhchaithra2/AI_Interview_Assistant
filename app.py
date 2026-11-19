@@ -38,9 +38,9 @@ elif mode == "Evaluate Answers":
   task = "Question :"+ question + "My Answer:" + answer +"Evaluate this answer based on concept,relevance,communication,length of answer.Give each rating out of 5 in a list."
 elif mode == "Improve Answers":
   task = "Question :"+ question + "My Answer:" + answer +" Improve answers based on choice of words, key words to include,accurate,concise and clear answer."
-background = "Job role :" +role+ "Difficult level"+Level
+  background = "Job role :" +role+ "Difficult level"+Level
   with st.spinner("Generating your answer...."):
-try:
+   try:
       response = client.chat.completions.create(
       model = gen_model,
       messages = [{"role":"system","content":"Act as a Senior Interviewer,both HR and Technical expert"},
@@ -54,7 +54,7 @@ try:
       st.download_button("Download Response", output ,file_name = "Interview_Response.txt", mine = 'text/plain')
 
 
-except Exception as e:
+   except Exception as e:
       st.error("API connection was unsuccessful:",e)
       st.info ("Please check your API Key and rate limits")
       st.caption("Powered by streamlit.io and Github. Using LLM API")

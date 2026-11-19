@@ -39,7 +39,7 @@ elif mode == "Evaluate Answers":
 elif mode == "Improve Answers":
   task = "Question :"+ question + "My Answer:" + answer +" Improve answers based on choice of words, key words to include,accurate,concise and clear answer."
 background = "Job role :" +role+ "Difficult level"+Level
-with st.spinner("Generating your answer...."):
+  st.spinner("Generating your answer...."):
 try:
       response = client.chat.completions.create(
       model = gen_model,
